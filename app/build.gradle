@@ -30,16 +30,6 @@ greendao {
     targetGenDir 'src/main/java'
 }
 
-import org.greenrobot.greendao.gradle.Greendao3GeneratorTask
-
-afterEvaluate {
-  android.bootClasspath.each { File bootJar ->
-    tasks.withType(Greendao3GeneratorTask).configureEach { task ->
-      task.classpath += files(bootJar)
-    }
-  }
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
@@ -57,4 +47,14 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'me.grantland:autofittextview:0.2.1'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
+}
+
+import org.greenrobot.greendao.gradle.Greendao3GeneratorTask
+
+afterEvaluate {
+  android.bootClasspath.each { File bootJar ->
+    tasks.withType(Greendao3GeneratorTask).configureEach { task ->
+      task.classpath += files(bootJar)
+    }
+  }
 }
