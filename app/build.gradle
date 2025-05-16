@@ -64,8 +64,6 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
 }
 
-import org.greenrobot.greendao.gradle.Greendao3GeneratorTask
-
 afterEvaluate {
   android.bootClasspath.each { File bootJar ->
     tasks.withType(Greendao3GeneratorTask).configureEach { task ->
