@@ -48,7 +48,8 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build Debug APK (skip GreenDAO codegen)
-        run: ./gradlew assembleDebug -x greendao --stacktrace
+        run: |
+          ./gradlew clean assembleDebug -x greendao --info --stacktrace
 
       - name: Upload Debug APK
         uses: ./.github/actions/upload-artifact
