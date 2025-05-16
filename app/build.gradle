@@ -26,6 +26,18 @@ android {
 
 greendao {
     schemaVersion 2
+    daoPackage 'org.mushare.httper.entity'
+    targetGenDir 'src/main/java'
+}
+
+import org.greenrobot.greendao.gradle.Greendao3GeneratorTask
+
+afterEvaluate {
+  android.bootClasspath.each { File bootJar ->
+    tasks.withType(Greendao3GeneratorTask).configureEach { task ->
+      task.classpath += files(bootJar)
+    }
+  }
 }
 
 dependencies {
