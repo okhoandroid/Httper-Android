@@ -47,9 +47,8 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
 
-      - name: Build Debug APK (skip GreenDAO codegen)
-        run: |
-          ./gradlew clean assembleDebug -x greendao --info --stacktrace
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload Debug APK
         uses: ./.github/actions/upload-artifact
